@@ -1,0 +1,750 @@
+{
+ "titulo_pagina": "Cundinamarca · 17 municipios en 5 días hábiles",
+ "eyebrow": "Gualivá · Rionegro · Magdalena Centro",
+ "h1": "Diecisiete<br>municipios",
+ "h1_sub": "en cinco<br>días hábiles",
+ "lede": "Circuito en carro propio con traslado desde Manizales la tarde anterior y regreso la tarde del quinto día. Los 17 municipios caben en las ventanas de 8 a 12 y de 2 a 5 recortando la visita donde el reloj lo exige: ninguna baja de 65 minutos y el promedio queda en 83.",
+ "cifras": [
+  [
+   "17",
+   "municipios"
+  ],
+  [
+   "5",
+   "días hábiles"
+  ],
+  [
+   "83'",
+   "promedio por cabecera"
+  ],
+  [
+   "65'",
+   "la visita más corta"
+  ],
+  [
+   "~1.150",
+   "km estimados"
+  ]
+ ],
+ "banda_titulo": "Cómo cabe el día",
+ "banda_subtitulo": "Ventanas de visita contra tiempo de rodaje",
+ "banda": [
+  [
+   "rodar",
+   "6–8 · rodar",
+   2
+  ],
+  [
+   "abierto",
+   "8–12 · 240 min de ventana",
+   4
+  ],
+  [
+   "rodar",
+   "12–2 · traslado",
+   2
+  ],
+  [
+   "abierto",
+   "2–5 · 180 min",
+   3
+  ],
+  [
+   "rodar",
+   "5–7 · rodar",
+   2
+  ]
+ ],
+ "origen": "manizales",
+ "lugares": {
+  "manizales": {
+   "nombre": "Manizales",
+   "lon": -75.5174,
+   "lat": 5.0689,
+   "alt": 2150
+  },
+  "letras": {
+   "nombre": "Alto de Letras",
+   "lon": -75.3667,
+   "lat": 4.9833,
+   "alt": 3679
+  },
+  "fresno": {
+   "nombre": "Fresno",
+   "lon": -75.0361,
+   "lat": 5.1531,
+   "alt": 1500
+  },
+  "mariquita": {
+   "nombre": "Mariquita",
+   "lon": -74.8917,
+   "lat": 5.1994,
+   "alt": 495
+  },
+  "honda": {
+   "nombre": "Honda",
+   "lon": -74.7439,
+   "lat": 5.2072,
+   "alt": 229
+  },
+  "guaduas": {
+   "nombre": "Guaduas",
+   "lon": -74.5947,
+   "lat": 5.0733,
+   "alt": 992
+  },
+  "villeta": {
+   "nombre": "Villeta",
+   "lon": -74.4706,
+   "lat": 5.0128,
+   "alt": 842
+  },
+  "quebradanegra": {
+   "nombre": "Quebradanegra",
+   "lon": -74.4769,
+   "lat": 5.1167,
+   "alt": 1300
+  },
+  "tobia": {
+   "nombre": "Tobia",
+   "lon": -74.45,
+   "lat": 5.14,
+   "alt": 700
+  },
+  "nimaima": {
+   "nombre": "Nimaima",
+   "lon": -74.3856,
+   "lat": 5.1256,
+   "alt": 1100
+  },
+  "utica": {
+   "nombre": "Útica",
+   "lon": -74.4842,
+   "lat": 5.1875,
+   "alt": 497
+  },
+  "lapena": {
+   "nombre": "La Peña",
+   "lon": -74.3947,
+   "lat": 5.1994,
+   "alt": 1420
+  },
+  "villagomez": {
+   "nombre": "Villagómez",
+   "lon": -74.1983,
+   "lat": 5.2833,
+   "alt": 1750
+  },
+  "pacho": {
+   "nombre": "Pacho",
+   "lon": -74.1583,
+   "lat": 5.1333,
+   "alt": 1796
+  },
+  "supata": {
+   "nombre": "Supatá",
+   "lon": -74.2333,
+   "lat": 5.0611,
+   "alt": 1900
+  },
+  "sanfrancisco": {
+   "nombre": "San Francisco",
+   "lon": -74.2894,
+   "lat": 4.9744,
+   "alt": 2200
+  },
+  "lavega": {
+   "nombre": "La Vega",
+   "lon": -74.3419,
+   "lat": 4.9958,
+   "alt": 1230
+  },
+  "nocaima": {
+   "nombre": "Nocaima",
+   "lon": -74.3844,
+   "lat": 5.07,
+   "alt": 1100
+  },
+  "vergara": {
+   "nombre": "Vergara",
+   "lon": -74.3444,
+   "lat": 5.1167,
+   "alt": 1550
+  },
+  "sasaima": {
+   "nombre": "Sasaima",
+   "lon": -74.4342,
+   "lat": 4.9639,
+   "alt": 1203
+  },
+  "alban": {
+   "nombre": "Albán",
+   "lon": -74.4383,
+   "lat": 4.8781,
+   "alt": 2251
+  },
+  "guayabal": {
+   "nombre": "Guayabal de Síquima",
+   "lon": -74.515,
+   "lat": 4.8781,
+   "alt": 1600
+  },
+  "bituima": {
+   "nombre": "Bituima",
+   "lon": -74.54,
+   "lat": 4.8722,
+   "alt": 1580
+  },
+  "viani": {
+   "nombre": "Vianí",
+   "lon": -74.5606,
+   "lat": 4.8764,
+   "alt": 1400
+  },
+  "sanjuan": {
+   "nombre": "San Juan de Rioseco",
+   "lon": -74.6206,
+   "lat": 4.8494,
+   "alt": 1300
+  },
+  "cambao": {
+   "nombre": "Cambao",
+   "lon": -74.75,
+   "lat": 4.9333,
+   "alt": 250
+  },
+  "armero": {
+   "nombre": "Armero Guayabal",
+   "lon": -74.8833,
+   "lat": 5.0333,
+   "alt": 350
+  }
+ },
+ "nombres_cortos": {
+  "Guayabal de Síquima": "Guayabal de Síq.",
+  "San Juan de Rioseco": "San Juan Rioseco"
+ },
+ "rotular_paso": [
+  "tobia",
+  "guaduas",
+  "sanjuan"
+ ],
+ "dias": [
+  {
+   "n": 0,
+   "color": "#6B7F86",
+   "titulo": "Traslado a Villeta",
+   "base": "Noche en Villeta",
+   "meta": "sin visitas · ~250 km · 6 h 30 al volante",
+   "traslado": true,
+   "circuito": [
+    "guaduas",
+    "villeta"
+   ],
+   "paradas": [],
+   "filas": [
+    [
+     "10:30",
+     "Salida de Manizales",
+     "Letras, Fresno y Mariquita; sin afán, no hay visitas hoy",
+     "traslado"
+    ],
+    [
+     "15:00",
+     "Honda",
+     "Almuerzo tardío y primer tanqueo",
+     "traslado"
+    ],
+    [
+     "17:15",
+     "Villeta",
+     "Se duerme en el municipio donde empieza la ruta",
+     "pernocta"
+    ]
+   ]
+  },
+  {
+   "n": 1,
+   "color": "#C0562B",
+   "titulo": "El corredor de Tobia",
+   "base": "Noche en Villeta",
+   "meta": "4 visitas · 5 h 30 en pueblo · ~70 km",
+   "traslado": false,
+   "circuito": [
+    "villeta",
+    "quebradanegra",
+    "tobia",
+    "nimaima",
+    "nocaima",
+    "villeta"
+   ],
+   "paradas": [
+    "villeta",
+    "quebradanegra",
+    "nimaima",
+    "nocaima"
+   ],
+   "filas": [
+    [
+     "08:00",
+     "Villeta",
+     "Se empieza a pie desde el hotel",
+     "visita",
+     90
+    ],
+    [
+     "09:55",
+     "Quebradanegra",
+     "25 min al norte por la vía a Tobia",
+     "visita",
+     90
+    ],
+    [
+     "11:55",
+     "Tobia o Nimaima",
+     "Almuerzo; el traslado va dentro del descanso",
+     "traslado"
+    ],
+    [
+     "14:00",
+     "Nimaima",
+     "Sobre el río Negro",
+     "visita",
+     75
+    ],
+    [
+     "15:45",
+     "Nocaima",
+     "30 min; zona panelera",
+     "visita",
+     75
+    ],
+    [
+     "17:20",
+     "Villeta",
+     "Pernocta, 20 min de regreso",
+     "pernocta"
+    ]
+   ]
+  },
+  {
+   "n": 2,
+   "color": "#8A3A5E",
+   "titulo": "Norte del Gualivá y paso a Rionegro",
+   "base": "Noche en Pacho",
+   "meta": "3 visitas · 4 h 30 en pueblo · ~140 km",
+   "traslado": false,
+   "circuito": [
+    "villeta",
+    "tobia",
+    "utica",
+    "lapena",
+    "villagomez",
+    "pacho"
+   ],
+   "paradas": [
+    "utica",
+    "lapena",
+    "villagomez"
+   ],
+   "filas": [
+    [
+     "06:45",
+     "Salida de Villeta",
+     "1 h hasta Útica para abrir a las 8:00 en punto",
+     "traslado"
+    ],
+    [
+     "08:00",
+     "Útica",
+     "Tierra caliente en el cañón del río Negro",
+     "visita",
+     90
+    ],
+    [
+     "10:15",
+     "La Peña",
+     "45 min de ascenso continuo desde Útica",
+     "visita",
+     90
+    ],
+    [
+     "11:45",
+     "Ruta a Villagómez",
+     "1 h 15 de vía terciaria; almuerzo al llegar",
+     "traslado"
+    ],
+    [
+     "14:00",
+     "Villagómez",
+     "Tramo montañoso y parcialmente destapado",
+     "visita",
+     90
+    ],
+    [
+     "15:30",
+     "Ruta a Pacho",
+     "1 h 30 fuera de ventana",
+     "traslado"
+    ],
+    [
+     "17:00",
+     "Pacho",
+     "Pernocta y tanqueo obligatorio",
+     "pernocta"
+    ]
+   ]
+  },
+  {
+   "n": 3,
+   "color": "#2F6E5A",
+   "titulo": "La cornisa fría",
+   "base": "Noche en La Vega",
+   "meta": "4 visitas · 5 h 45 en pueblo · ~90 km",
+   "traslado": false,
+   "circuito": [
+    "pacho",
+    "supata",
+    "sanfrancisco",
+    "lavega"
+   ],
+   "paradas": [
+    "pacho",
+    "supata",
+    "sanfrancisco",
+    "lavega"
+   ],
+   "filas": [
+    [
+     "08:00",
+     "Pacho",
+     "Capital de la provincia de Rionegro",
+     "visita",
+     90
+    ],
+    [
+     "10:30",
+     "Supatá",
+     "1 h desde Pacho, clima frío",
+     "visita",
+     90
+    ],
+    [
+     "12:00",
+     "Almuerzo y traslado",
+     "30 min bajando hacia San Francisco",
+     "traslado"
+    ],
+    [
+     "14:00",
+     "San Francisco",
+     "El punto más alto del circuito, 2.200 m",
+     "visita",
+     85
+    ],
+    [
+     "15:40",
+     "La Vega",
+     "15 min por la Ruta 50",
+     "visita",
+     80
+    ],
+    [
+     "17:00",
+     "Fin del día",
+     "Se duerme en La Vega para abrir el día 4 más cerca",
+     "pernocta"
+    ]
+   ]
+  },
+  {
+   "n": 4,
+   "color": "#3B5C96",
+   "titulo": "Vergara y el descenso a Síquima",
+   "base": "Noche en Bituima",
+   "meta": "4 visitas · 4 h 45 en pueblo · ~120 km",
+   "traslado": false,
+   "circuito": [
+    "lavega",
+    "nocaima",
+    "vergara",
+    "nocaima",
+    "villeta",
+    "sasaima",
+    "alban",
+    "guayabal",
+    "bituima"
+   ],
+   "paradas": [
+    "vergara",
+    "sasaima",
+    "alban",
+    "guayabal"
+   ],
+   "filas": [
+    [
+     "06:30",
+     "Salida de La Vega",
+     "1 h 25 hasta Vergara pasando por Nocaima",
+     "traslado"
+    ],
+    [
+     "08:00",
+     "Vergara",
+     "El día más exigente de manejo dentro de ventana",
+     "visita",
+     75
+    ],
+    [
+     "10:40",
+     "Sasaima",
+     "Se regresa por Nocaima y Villeta, 1 h 25",
+     "visita",
+     75
+    ],
+    [
+     "11:55",
+     "Almuerzo en Sasaima",
+     "Luego 25 min subiendo a Albán",
+     "traslado"
+    ],
+    [
+     "14:00",
+     "Albán",
+     "2.251 m, el punto más frío del circuito",
+     "visita",
+     65
+    ],
+    [
+     "15:50",
+     "Guayabal de Síquima",
+     "45 min bajando a Magdalena Centro",
+     "visita",
+     70
+    ],
+    [
+     "17:40",
+     "Bituima",
+     "Pernocta; hospedaje escaso, reservar antes",
+     "pernocta"
+    ]
+   ]
+  },
+  {
+   "n": 5,
+   "color": "#A9781F",
+   "titulo": "Cierre y cruce del Magdalena",
+   "base": "Regreso a Manizales el mismo día",
+   "meta": "2 visitas · 3 h en pueblo · ~310 km",
+   "traslado": false,
+   "circuito": [
+    "bituima",
+    "viani",
+    "sanjuan"
+   ],
+   "paradas": [
+    "bituima",
+    "viani"
+   ],
+   "filas": [
+    [
+     "08:00",
+     "Bituima",
+     "Se visita el pueblo donde amaneció",
+     "visita",
+     90
+    ],
+    [
+     "10:00",
+     "Vianí",
+     "Último municipio del recorrido",
+     "visita",
+     90
+    ],
+    [
+     "11:30",
+     "San Juan de Rioseco y Cambao",
+     "Almuerzo y cruce del Magdalena al Tolima",
+     "traslado"
+    ],
+    [
+     "14:45",
+     "Mariquita",
+     "Último tanqueo antes de subir a Letras",
+     "traslado"
+    ],
+    [
+     "17:45",
+     "Manizales",
+     "Llegada con luz",
+     "llegada"
+    ]
+   ]
+  }
+ ],
+ "corredor": {
+  "titulo": "Traslado y regreso",
+  "subtitulo": "Día 0 por Letras y Honda · tarde del día 5 por Cambao",
+  "comun": [
+   "manizales",
+   "letras",
+   "fresno",
+   "mariquita"
+  ],
+  "ida": [
+   "mariquita",
+   "honda",
+   "guaduas",
+   "villeta"
+  ],
+  "vuelta": [
+   "viani",
+   "sanjuan",
+   "cambao",
+   "armero",
+   "mariquita"
+  ],
+  "color_ida": "#6B7F86",
+  "color_vuelta": "#A9781F",
+  "dia_ida": 0,
+  "dia_vuelta": 5,
+  "titulo_ida": "Día 0 · traslado, 6 h 30",
+  "titulo_vuelta": "Día 5 · regreso, 6 h 15",
+  "ida_lista": [
+   [
+    "Manizales",
+    ""
+   ],
+   [
+    "Alto de Letras",
+    "1 h 50"
+   ],
+   [
+    "Fresno",
+    "1 h 20"
+   ],
+   [
+    "Mariquita",
+    "50 min"
+   ],
+   [
+    "Honda",
+    "25 min"
+   ],
+   [
+    "Guaduas",
+    "1 h 05"
+   ],
+   [
+    "Villeta",
+    "1 h"
+   ]
+  ],
+  "vuelta_lista": [
+   [
+    "Vianí",
+    ""
+   ],
+   [
+    "San Juan de Rioseco",
+    "45 min"
+   ],
+   [
+    "Cambao",
+    "30 min"
+   ],
+   [
+    "Armero Guayabal",
+    "50 min"
+   ],
+   [
+    "Mariquita",
+    "35 min"
+   ],
+   [
+    "Alto de Letras",
+    "2 h 10"
+   ],
+   [
+    "Manizales",
+    "50 min"
+   ]
+  ],
+  "anclas": [
+   "villeta",
+   "viani"
+  ],
+  "rio": [
+   [
+    -74.8,
+    5.35
+   ],
+   [
+    -74.744,
+    5.207
+   ],
+   [
+    -74.72,
+    5.1
+   ],
+   [
+    -74.75,
+    4.98
+   ],
+   [
+    -74.75,
+    4.933
+   ],
+   [
+    -74.77,
+    4.85
+   ],
+   [
+    -74.8,
+    4.76
+   ]
+  ],
+  "rio_rotulo": [
+   -74.72,
+   5.05,
+   "Río Magdalena"
+  ],
+  "leyenda": "gris claro = tramo compartido · azul = traslado día 0 · punteado = regreso día 5"
+ },
+ "notas": {
+  "banda": "Con visitas fijas de 90 minutos solo caben tres municipios diarios y 17 no entran en cinco días. Recortando donde el traslado aprieta sí entran: la mañana da 240 minutos y la tarde 180, y de ahí se descuenta lo que se va en carretera entre pueblo y pueblo.",
+  "mapa": "Las líneas siguen el orden real de visita pero no la geometría exacta de la vía. En pantalla pequeña el mapa muestra solo los números y los pueblos muy juntos se separan con una línea guía.",
+  "perfil": "En dos días pasa de los 497 m de Útica a los 2.251 m de Albán. Lleve ropa para tierra caliente y para clima frío en el mismo maletín.",
+  "corredor": "Ida y regreso comparten solo el tramo Manizales–Letras–Fresno–Mariquita. Se sale cruzando el Magdalena en Cambao, lo que ahorra unas dos horas frente a devolverse por Villeta."
+ },
+ "titulo_avisos": "Antes de arrancar",
+ "sub_avisos": "Los puntos que pueden dañar el plan",
+ "avisos": [
+  {
+   "titulo": "Tramo crítico",
+   "alerta": true,
+   "texto": "La Peña – Villagómez – Pacho depende de vías terciarias de montaña y el día 2 la recorre completa. Si llueve fuerte, duerma en Pacho igual y haga Villagómez como ida y vuelta desde Pacho la mañana del día 3."
+  },
+  {
+   "titulo": "Dónde se recortó",
+   "texto": "Albán baja a 65 minutos y Guayabal a 70 porque comparten la tarde del día 4; Vergara y Sasaima quedan en 75 por la hora y media que las separa. Nueve municipios conservan los 90 completos."
+  },
+  {
+   "titulo": "Las horas fuera de ventana",
+   "texto": "Las salidas de 6:45 del día 2 y de 6:30 del día 4 no son opcionales: sin ellas la primera visita no abre a las 8:00 y se cae un municipio."
+  },
+  {
+   "titulo": "Combustible",
+   "texto": "Tanquee en Honda, Villeta, Pacho y Mariquita. Entre La Peña y Villagómez no hay estaciones confiables."
+  },
+  {
+   "titulo": "Alojamiento",
+   "texto": "Villeta, La Vega y Pacho tienen oferta suficiente. Bituima es el punto débil: si no consigue habitación, duerma en Guayabal de Síquima o en Albán y arranque 30 minutos antes."
+  },
+  {
+   "titulo": "Estado de vías",
+   "texto": "Confirme el paso por Alto de Letras y los tramos de Rionegro con INVÍAS (#767) antes de salir."
+  }
+ ],
+ "pie": "Tiempos de conducción estimados para vía de montaña a 30–45 km/h promedio · Altitudes aproximadas de cabecera municipal<br>Trazado esquemático sobre coordenadas de cabeceras · No sustituye navegación GPS"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "planificador-rutas",
+  "description": "Planifica rutas por carretera entre varios municipios mediante entrevista guiada y entrega el itinerario en HTML y PDF.",
+  "author": { "name": "PipeHerreraL" },
+  "license": "MIT",
+  "keywords": ["rutas", "itinerario", "viajes"]
+}
