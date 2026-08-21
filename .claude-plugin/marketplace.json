@@ -5,16 +5,19 @@
     "name": "PipeHerreraL",
     "url": "https://github.com/PipeHerreraL"
   },
-  "metadata": {
-    "pluginRoot": "./plugins"
-  },
   "plugins": [
     {
       "name": "planificador-rutas",
-      "source": "./planificador-rutas",
+      "source": "./plugins/planificador-rutas",
       "description": "Entrevista al usuario, verifica si la ruta cabe en los dias disponibles y entrega el itinerario como HTML estatico y PDF.",
       "category": "productivity",
-      "keywords": ["rutas", "itinerario", "viajes", "html", "pdf"],
+      "keywords": [
+        "rutas",
+        "itinerario",
+        "viajes",
+        "html",
+        "pdf"
+      ],
       "license": "MIT"
     }
   ]
