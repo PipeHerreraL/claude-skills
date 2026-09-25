@@ -104,6 +104,32 @@ las dos líneas se tapan entre sí. Las `*_lista` alimentan la versión móvil, 
 de tiempo vertical con la duración de cada tramo — más útil en un teléfono que un mapa
 aplastado.
 
+**`navegar`** — opcional; la sección de enlaces sale aunque el campo no exista.
+
+- Ausente o `true`: se arma sola. Un bloque por día con paradas, cada parada con su enlace de
+  Waze y como detalle la hora y los minutos de su fila `visita`; un enlace de Google Maps por
+  día; y un bloque final de regreso al `origen`.
+- `false`: se omite la sección.
+- Diccionario: igual que `true`, pero admite ajustes:
+
+```json
+"navegar": {
+  "titulo": "Navegar con Waze",
+  "sub": "Un enlace por parada, en orden de visita",
+  "intro": "Texto de apertura; por defecto explica que Waze admite una sola parada.",
+  "nota": "Texto de cierre; por defecto aclara a dónde llevan los enlaces.",
+  "detalles": {"paime": "desde La Palma · 2 h 30, pasando por Villagómez"},
+  "gmaps": true,
+  "regreso": true,
+  "detalle_regreso": "6 h 30 por Vianí y Cambao",
+  "nota_regreso": "Waze puede proponer otra vía; la sugerida es por Cambao"
+}
+```
+
+`detalles` reemplaza el texto bajo el nombre de una parada, por clave de lugar. Si además
+viene `grupos`, el generador no arma nada y usa esos grupos tal cual:
+`[{"titulo", "color", "detalle", "items": [[num, nombre, url_waze, detalle]], "gmaps": url o lista}]`.
+
 ## Campos de ajuste fino
 
 Rara vez hacen falta: el generador coloca las etiquetas y separa los marcadores solo.
