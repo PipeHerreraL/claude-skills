@@ -7,6 +7,7 @@ El HTML resultante abre en cualquier visor, incluidos los de iOS que no ejecutan
 JavaScript, y trae version movil y de escritorio de cada grafico.
 """
 import json, sys, os
+from urllib.parse import quote
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from svg_mapas import mapa, perfil, corredor, esc, PAPEL2, TINTA, TINTA2, LINEA, SEPIA
 
@@ -54,6 +55,115 @@ def bloque_dias(plan):
                 out.append('<span class="tag" style="color:%s">%s</span>' % (d["color"] if tipo == "visita" else TINTA2, tag))
             out.append('</td><td class="det">%s</td></tr>' % esc(nota))
         out.append('</tbody></table></article>')
+    return "\n".join(out)
+
+
+# --- Navegación: Waze y Google Maps -------------------------------------------------
+# Waze solo admite una parada por ruta y sus enlaces profundos aceptan un único destino,
+# así que no hay forma de cargarle un recorrido completo: se entrega un enlace por parada.
+# Google Maps sí acepta varias paradas en un enlace (hasta 9 intermedias en la app, solo
+# 3 si se abre en el navegador del celular); se entrega uno por día o tramo.
+
+GMAPS_MAX_INTERMEDIAS = 9
+
+
+def _ll(lugar):
+    return "%.5f,%.5f" % (lugar["lat"], lugar["lon"])
+
+
+def url_waze(lugar):
+    return "https://www.waze.com/ul?ll=%s&navigate=yes" % quote(_ll(lugar), safe="")
+
+
+def url_gmaps(lugares):
+    """Ruta de Google Maps desde la ubicación actual por todas las paradas dadas."""
+    destino, intermedias = lugares[-1], lugares[:-1]
+    url = "https://www.google.com/maps/dir/?api=1&destination=%s&travelmode=driving" % quote(_ll(destino), safe="")
+    if intermedias:
+        url += "&waypoints=%s" % quote("|".join(_ll(x) for x in intermedias), safe="")
+    return url
+
+
+def _detalle_visita(d, nombre):
+    for f in d.get("filas", []):
+        if f[3] == "visita" and f[1] == nombre:
+            mins = f[4] if len(f) > 4 else 0
+            if isinstance(mins, str):
+                return "%s · %s" % (f[0], mins)
+            return ("%s · %d min" % (f[0], mins)) if mins else f[0]
+    return ""
+
+
+def grupos_navegar(plan, nav):
+    """Arma los grupos de enlaces a partir de los días del plan, salvo que vengan dados."""
+    if nav.get("grupos"):
+        return nav["grupos"]
+    L, detalles = plan["lugares"], nav.get("detalles", {})
+    etiqueta = plan.get("etiqueta_dia", "Día")
+    grupos = []
+    for d in plan["dias"]:
+        if not d["paradas"]:
+            continue
+        items = [[str(plan["_idx"][k]), L[k]["nombre"], url_waze(L[k]),
+                  detalles.get(k) or _detalle_visita(d, L[k]["nombre"])] for k in d["paradas"]]
+        g = {"titulo": "%s %s · %s" % (etiqueta, d["n"], d["titulo"]), "color": d["color"],
+             "detalle": "%d parada%s" % (len(items), "" if len(items) == 1 else "s"), "items": items}
+        paradas = [L[k] for k in d["paradas"]]
+        if len(paradas) >= 2 and nav.get("gmaps", True):
+            # Si el día trae más paradas de las que admite un enlace, se parte en varios.
+            trozos = [paradas[i:i + GMAPS_MAX_INTERMEDIAS + 1]
+                      for i in range(0, len(paradas), GMAPS_MAX_INTERMEDIAS + 1)]
+            g["gmaps"] = [url_gmaps(t) for t in trozos]
+            g["gmaps_texto"] = "%s %s completo en Google Maps" % (etiqueta, d["n"])
+        grupos.append(g)
+    origen = plan.get("origen")
+    if origen and nav.get("regreso", True) and origen in L:
+        grupos.append({"titulo": "Regreso", "color": plan.get("corredor", {}).get("color_vuelta", TINTA2),
+                       "detalle": nav.get("detalle_regreso", ""),
+                       "items": [["↩", L[origen]["nombre"], url_waze(L[origen]),
+                                  nav.get("nota_regreso", "Waze puede proponer una vía distinta a la del plan")]]})
+    return grupos
+
+
+def bloque_navegar(plan):
+    nav = plan.get("navegar", True)
+    if nav is False:
+        return ""
+    if nav is True:
+        nav = {}
+    grupos = grupos_navegar(plan, nav)
+    if not grupos:
+        return ""
+    out = ['<section id="sec-navegar"><h2>%s</h2><p class="sub">%s</p>' % (
+        esc(nav.get("titulo", "Navegar con Waze")),
+        esc(nav.get("sub", "Un enlace por parada, en orden de visita")))]
+    out.append('<p class="nota nav-intro">%s</p>' % esc(nav.get("intro",
+        "Waze solo admite una parada por ruta, así que no hay forma de cargarle el recorrido completo. "
+        "Por eso va un enlace por parada: al terminar en una, toque la siguiente y Waze arranca la "
+        "navegación desde donde esté. Cada bloque trae además un enlace de Google Maps con todas sus paradas.")))
+    for g in grupos:
+        col = g.get("color", TINTA)
+        out.append('<div class="nav-grupo" style="border-top-color:%s">' % col)
+        out.append('<div class="nav-cab"><b style="color:%s">%s</b><span>%s</span></div>'
+                   % (col, esc(g["titulo"]), esc(g.get("detalle", ""))))
+        for num, nombre, url, det in g["items"]:
+            out.append('<a class="nav-fila" href="%s"><span class="nav-num" style="background:%s">%s</span>'
+                       '<span class="nav-nom">%s<small>%s</small></span><span class="nav-ir">Waze &rarr;</span></a>'
+                       % (esc(url), col, esc(num), esc(nombre), esc(det)))
+        enlaces = g.get("gmaps") or []
+        if isinstance(enlaces, str):
+            enlaces = [enlaces]
+        for i, u in enumerate(enlaces):
+            texto = g.get("gmaps_texto", "Tramo completo en Google Maps")
+            if len(enlaces) > 1:
+                texto += " (%d de %d)" % (i + 1, len(enlaces))
+            out.append('<a class="nav-gmaps" href="%s">%s &rarr;</a>' % (esc(u), esc(texto)))
+        out.append('</div>')
+    out.append('<p class="nota">%s</p>' % esc(nav.get("nota",
+        "Los enlaces llevan a las coordenadas de cada lugar del plan (normalmente el centro de la "
+        "cabecera), no a una dirección exacta. Los de Google Maps cargan todas las paradas en la app; "
+        "si se abren en el navegador del celular, Google solo toma tres.")))
+    out.append('</section>')
     return "\n".join(out)
 
 
@@ -124,6 +234,7 @@ def construir(plan):
         nota_mapa=esc(notas.get("mapa", "")),
         sub_itinerario=esc(plan.get("sub_itinerario", "Cada parada muestra sus minutos reales de visita")),
         dias=bloque_dias(plan),
+        sec_navegar=bloque_navegar(plan),
         titulo_avisos=esc(plan.get("titulo_avisos", "Antes de arrancar")),
         sub_avisos=esc(plan.get("sub_avisos", "")), avisos=avisos,
         pie=plan.get("pie", ""))
@@ -193,6 +304,17 @@ PLANTILLA = u"""<!DOCTYPE html>
   tr.paso .lugar{font-weight:400;font-family:var(--body);color:var(--tinta-2);font-size:14.5px}
   .det{font-size:14px;color:var(--tinta-2)}
   .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;padding:2px 5px;margin-left:8px;white-space:nowrap;display:inline-block}
+  .nav-intro{margin:0 0 6px}
+  .nav-grupo{border-top:2px solid var(--tinta);margin-top:26px;padding-top:10px}
+  .nav-cab{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+  .nav-cab b{font-family:var(--disp);font-size:16px;font-weight:800;text-transform:uppercase}
+  .nav-cab span{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-2)}
+  a.nav-fila{display:flex;align-items:center;gap:12px;min-height:48px;padding:8px 6px;border-bottom:1px solid var(--linea);text-decoration:none;color:var(--tinta)}
+  .nav-num{flex:0 0 auto;width:26px;height:26px;border-radius:50%%;color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .nav-nom{flex:1 1 auto;font-family:var(--disp);font-weight:700;font-size:15px;line-height:1.25}
+  .nav-nom small{display:block;font-family:var(--body);font-weight:400;font-size:13px;color:var(--tinta-2)}
+  .nav-ir{flex:0 0 auto;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--linea);background:var(--papel-2);padding:7px 10px;color:var(--tinta)}
+  a.nav-gmaps{display:inline-block;margin:10px 8px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta);border:1px solid var(--tinta);padding:9px 12px;text-decoration:none}
   .avisos{display:flex;flex-wrap:wrap;gap:1px;background:var(--linea);border:1px solid var(--linea);margin-top:10px}
   .aviso{background:var(--papel-2);padding:18px;flex:1 1 260px}
   .aviso h3{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px;color:var(--sepia)}
@@ -250,10 +372,10 @@ PLANTILLA = u"""<!DOCTYPE html>
     .fact{flex:1 1 105px}
     .fact b{font-size:20pt}
     section{padding-top:26px}
-    #sec-reloj,#itinerario,#sec-avisos{break-before:page;page-break-before:always;padding-top:0}
+    #sec-reloj,#itinerario,#sec-navegar,#sec-avisos{break-before:page;page-break-before:always;padding-top:0}
     h2,.sub{break-after:avoid;page-break-after:avoid}
     h2{font-size:16pt;margin-bottom:2px}
-    .lienzo,.avisos,.aviso,.dia,footer,.leyenda,.banda{break-inside:avoid;page-break-inside:avoid}
+    .lienzo,.avisos,.aviso,.dia,footer,.leyenda,.banda,.nav-grupo{break-inside:avoid;page-break-inside:avoid}
     .dia{margin-top:18px}
     .dia-num{font-size:28pt}
     td{padding:5.5px 7px}
@@ -292,6 +414,7 @@ PLANTILLA = u"""<!DOCTYPE html>
   </section>
   </div>
   </div>
+  %(sec_navegar)s
   <section id="sec-avisos">
     <h2>%(titulo_avisos)s</h2>
     <p class="sub">%(sub_avisos)s</p>

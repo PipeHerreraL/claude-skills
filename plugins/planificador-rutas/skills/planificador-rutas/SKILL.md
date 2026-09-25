@@ -1,6 +1,6 @@
 ---
 name: planificador-rutas
-description: Planifica rutas de viaje por carretera entre varios municipios o ciudades mediante una entrevista guiada, y entrega el itinerario como documento HTML estático más PDF imprimible con mapa del circuito, perfil de altitudes y horarios día por día. Úsala SIEMPRE que alguien pida planear una ruta, un recorrido, una gira o un itinerario que toque varios pueblos, municipios, ciudades o sitios, o que mencione ventanas de horario para visitar, tiempo máximo por parada, días disponibles, salida desde una ciudad base o entrega del plan en HTML/PDF — aunque no nombre la skill ni pida explícitamente un documento. También aplica cuando pidan ajustar, recortar o rebalancear un itinerario que ya existe.
+description: Planifica rutas de viaje por carretera entre varios municipios o ciudades mediante una entrevista guiada, y entrega el itinerario como documento HTML estático más PDF imprimible con mapa del circuito, perfil de altitudes y horarios día por día. Úsala SIEMPRE que alguien pida planear una ruta, un recorrido, una gira o un itinerario que toque varios pueblos, municipios, ciudades o sitios, o que mencione ventanas de horario para visitar, tiempo máximo por parada, días disponibles, salida desde una ciudad base o entrega del plan en HTML/PDF — aunque no nombre la skill ni pida explícitamente un documento. También aplica cuando pidan ajustar, recortar o rebalancear un itinerario que ya existe, o llevar un recorrido a Waze o Google Maps.
 ---
 
 # Planificador de rutas por municipios
@@ -79,7 +79,28 @@ Esto no es una preferencia estética:
 
 El documento incluye portada con cifras, banda de ventanas horarias, mapa del circuito con
 paradas numeradas, perfil de altitudes, esquema de traslado y regreso, itinerario día por
-día con los minutos reales de cada parada, y bloque de avisos.
+día con los minutos reales de cada parada, sección **Navegar con Waze** y bloque de avisos.
+
+## Navegar con Waze
+
+Si el usuario pide "exportar la ruta a Waze", dile de una vez que no se puede cargar
+completa: Waze solo admite **una parada por ruta** y sus enlaces profundos aceptan un único
+destino, y no importa GPX ni KML. Lo que sí se puede, y el generador arma solo a partir de
+`dias` y `lugares`:
+
+- **Un enlace de Waze por parada**, en orden de visita y agrupado por día, más uno final de
+  regreso al `origen`. Al terminar en una parada, el usuario toca la siguiente y Waze
+  navega desde donde esté. Son enlaces `https://www.waze.com/ul?ll=lat,lon&navigate=yes`,
+  que funcionan en el HTML y también en el PDF.
+- **Un enlace de Google Maps por día** con todas sus paradas. Google admite hasta 9
+  paradas intermedias en la app, pero solo 3 si el enlace se abre en el navegador del
+  celular; el generador parte en varios enlaces los días que pasan de 10 paradas.
+
+Los enlaces apuntan a las coordenadas de `lugares`, normalmente el centro de la cabecera.
+Si el usuario necesita llegar a una dirección exacta (un juzgado, una alcaldía, una
+bodega), usa las coordenadas de ese sitio y no las del pueblo. La sección sale por
+defecto; `"navegar": false` la quita. Los campos para ajustarla están en
+`references/formato-plan.md`.
 
 Los scripts colocan solos las etiquetas del mapa evitando choques y separan los marcadores
 que quedan demasiado juntos. No hace falta ajustar coordenadas a mano.
@@ -104,6 +125,6 @@ tomar 40 minutos.
 - `references/formato-plan.md` — estructura de `plan.json` campo por campo
 - `references/datos-cundinamarca.md` — coordenadas, altitudes y tiempos ya validados
 - `assets/ejemplo-plan.json` — un plan completo y funcional, útil como plantilla
-- `scripts/generar_documento.py` — `plan.json` → HTML estático
+- `scripts/generar_documento.py` — `plan.json` → HTML estático, incluidos los enlaces de Waze y Google Maps
 - `scripts/html_a_pdf.py` — HTML → PDF A4 con encabezado de página
 - `scripts/svg_mapas.py` — módulo de dibujo, no se ejecuta directo

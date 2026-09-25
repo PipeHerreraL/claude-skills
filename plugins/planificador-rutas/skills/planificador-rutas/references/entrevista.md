@@ -33,6 +33,10 @@ una por una y no siempre aporta.
   o de salida pasa de dos o tres horas.
 - **¿Va a ver el documento en el celular, imprimirlo, o ambos?** Por defecto se entregan
   las dos versiones, HTML y PDF.
+- **¿Necesita llegar a una dirección exacta en cada parada** (juzgado, alcaldía, cliente)?
+  El documento trae un enlace de Waze por parada que lleva a las coordenadas del lugar.
+  Si basta con el centro del pueblo, sirven las de la cabecera; si no, pide o busca las
+  del sitio exacto antes de escribir `lugares`.
 
 ## Bloque 2 — condicionales
 
